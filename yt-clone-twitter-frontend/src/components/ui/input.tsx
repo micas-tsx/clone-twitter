@@ -10,12 +10,19 @@ type Props = {
     filled?: boolean;
     onChange?: (newValue: string) => void;
     password?: boolean;
-    icon?: IconDefinition
-}
+    icon?: IconDefinition;
+    onEnter?: () => void;
+} 
 
-export const Input = ({ placeholder, value, onChange, password, icon, filled }: Props) => {
+export const Input = ({ placeholder, value, onChange, password, icon, filled, onEnter }: Props) => {
     const [showPassword, setShowPassword] = useState(false)
     
+    const handleKeyUp = (event: KeyboradEvent<HTMLInputElement>) => {
+        if(event.code.toLowerCase() === 'enter' && onEnter) {
+            onEnter()
+        }
+    }
+
     return (
         <div className={`has-[:focus]:border-white flex items-center h-14 rounded-3xl border-2 border-gray-700 ${filled && 'bg-gray-700'}`}>
             {icon && 
@@ -25,11 +32,12 @@ export const Input = ({ placeholder, value, onChange, password, icon, filled }: 
             />}
             
             <input
+                type={password && !showPassword ? 'password' : 'text'}
                 className=" flex-1 outline-none bg-transparent h-full px-4"
                 placeholder={placeholder}
                 value={value}
                 onChange={e => onChange && onChange(e.target.value)}
-                type={password && !showPassword ? 'password' : 'text'}
+                onKeyUp = {handleKeyUp}
             />
             {password && 
                 <FontAwesomeIcon 
