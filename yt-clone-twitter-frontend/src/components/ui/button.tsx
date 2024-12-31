@@ -6,6 +6,7 @@ type Props = {
 
 export const Button = ({ label, onClick, size }: Props) => {
     return( 
+        // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
         <div 
         onClick={onClick}
         className={`flex justify-center items-center cursor-pointer bg-white text-black font-bold rounded-3xl
