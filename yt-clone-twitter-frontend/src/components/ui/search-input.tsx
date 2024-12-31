@@ -3,6 +3,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { Input } from "./input"
 import { useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 
 type Props = { 
     defaultValue?: string
@@ -12,12 +13,13 @@ type Props = {
 export const SearchIpunt = ({ defaultValue, hideOnSearch }: Props) => {
     const router = useRouter()
     
-    const pathName = usePathName()
+    const pathName = usePathname()
 
     const [searchInput, setSearchInput] = useState(defaultValue ?? '')
 
     const handleSearchEnter = () => {
         if(searchInput) {
+            // biome-ignore lint/style/useTemplate: <explanation>
             router.push('/search?q=' + encodeURIComponent(searchInput))
         }
     }
