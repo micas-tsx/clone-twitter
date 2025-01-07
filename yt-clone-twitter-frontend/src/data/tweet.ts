@@ -6,7 +6,7 @@ export const tweet: Tweet = {
     id: 123,
     user: user,
     body: 'Outro dia magico',
-    image: 'https://www.google.com/imgres?q=image%20tweet&imgurl=https%3A%2F%2Fphotos5.appleinsider.com%2Fgallery%2F50177-98486-tweet-xl.jpg&imgrefurl=https%3A%2F%2Fappleinsider.com%2Farticles%2F22%2F09%2F01%2Ftwitter-is-testing-an-edit-tweet-feature&docid=SeFwfcNDnQ9m0M&tbnid=4YxlaYYlHvUdNM&vet=12ahUKEwi40JTKqt-KAxVbALkGHXfTI10QM3oFCIMBEAA..i&w=1280&h=720&hcb=2&ved=2ahUKEwi40JTKqt-KAxVbALkGHXfTI10QM3oFCIMBEAA',
+    image: 'https://149369349.v2.pressablecdn.com/wp-content/uploads/2012/10/twitter-cover-photo-9.jpg',
     likeCount: 320,
     commentCount: 20,
     retweetCount: 15,

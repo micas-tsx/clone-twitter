@@ -2,6 +2,7 @@
 
 // biome-ignore lint/style/useImportType: <explanation>
 import { Tweet } from "@/types/tweet"
+import { formatRelativeTime } from "@/utils/format-relative"
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons"
 import { faRetweet, faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -35,7 +36,7 @@ export const TweetItem = ({ tweet }: Props) => {
                     <div className="font-bold text-lg">
                         <Link href={`/${tweet.user.slug}`}>{tweet.user.name}</Link>
                     </div>
-                    <div className="text-sx text-gray-500">@{tweet.user.slug}</div>
+                    <div className="text-sx text-gray-500">@{tweet.user.slug} - {formatRelativeTime(tweet.dataPost)}</div>
                 </div>
                 <div className="py-4 text-lg">{tweet.body}</div>
                 {tweet.image &&
