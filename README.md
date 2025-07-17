@@ -8,7 +8,7 @@
 
 ## 🌎 Projeto Online
 
-[🔗 Acesse aqui](https://projecttweet.netlify.app)
+[🔗 Acesse aqui](https://zprojeto.netlify.app)
 
 ---
 
