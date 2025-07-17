@@ -17,7 +17,7 @@ type Props = {
 export const Input = ({ placeholder, value, onChange, password, icon, filled, onEnter }: Props) => {
     const [showPassword, setShowPassword] = useState(false)
     
-    const handleKeyUp = (event: KeyboradEvent<HTMLInputElement>) => {
+    const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.code.toLowerCase() === 'enter' && onEnter) {
             onEnter()
         }
