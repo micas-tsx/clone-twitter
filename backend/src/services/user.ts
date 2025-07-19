@@ -1,7 +1,8 @@
+import type { Prisma } from "@prisma/client"
 import { prisma } from "../utils/prisma"
 import { getPublicURL } from "../utils/url"
 
-export const findUserByEmail = async (email: String) => {
+export const findUserByEmail = async (email: string) => {
   const user = await prisma.user.findFirst({
     where: { email }
   })
@@ -17,7 +18,7 @@ export const findUserByEmail = async (email: String) => {
   return null
 }
 
-export const findUserBySlug = async (slug: String ) => {
+export const findUserBySlug = async (slug: string ) => {
   const user = await prisma.user.findFirst({
     select: {
       avatar: true,
@@ -39,4 +40,14 @@ export const findUserBySlug = async (slug: String ) => {
   }
 
   return null
+}
+
+export const createUser = async ( data:{ slug: string, name: string, email: string, password: string } ) => {
+  const newUser = await prisma.user.create({ data })
+
+  return {
+    ...newUser,
+    avatar: getPublicURL(newUser.avatar),
+    cover: getPublicURL(newUser.cover)
+  }
 }
