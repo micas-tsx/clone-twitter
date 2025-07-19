@@ -1,14 +1,16 @@
 import { Router } from 'express'
 import * as pingController from '../controllers/ping'
+import * as authController from '../controllers/auth'
 
 export const mainRouter = Router()
 
 mainRouter.get('/ping', pingController.ping)
 //mainRouter.get('/privateping')
 
-/*
+
 // rotas de login
-mainRouter.post('/auth/signup') //rota de cadastro
+mainRouter.post('/auth/signup',authController.signup) //rota de cadastro
+/*
 mainRouter.post('/auth/signin') //rota de login
 
 //fazer um tweet
