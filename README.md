@@ -1,7 +1,7 @@
 # 🚀 Clone Twitter
 
 <p align="center">
-  <img src="public/logo.png" width="120" alt="Logo" />
+  <img src="frontend/public/logo.png" width="120" alt="Logo" />
 </p>
 
 <h1 align="center">Clone Twitter</h1>
