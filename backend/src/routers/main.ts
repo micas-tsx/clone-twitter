@@ -18,9 +18,9 @@ mainRouter.post('/auth/signin', authController.signin) //rota de login
 mainRouter.post('/tweet', verifyJWT, tweetController.addTweet) // posta um tweet
 mainRouter.get('/tweet/:id', verifyJWT, tweetController.getTweet) // pesquisa um tweet
 mainRouter.get('/tweet/:id/answers', verifyJWT, tweetController.getAnswers) // vê as respostas de um tweet
-/*
-mainRouter.get('/tweet/:id/like') // toggle de like
+mainRouter.post('/tweet/:id/like', verifyJWT, tweetController.likeToggle) // toggle de like
 
+/*
 // usuario
 mainRouter.get('/user/:slug') // pesquisa de usuario
 mainRouter.get('/user/:slug/tweets') // pesquisa de tweet de um usuario

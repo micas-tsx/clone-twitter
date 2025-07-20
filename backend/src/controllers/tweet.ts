@@ -2,7 +2,7 @@ import type { Response } from "express";
 import type { ExtendedRequest } from "../types/extended-request";
 import { addTweetSchema } from "../schemas/add-tweet";
 import { z } from "zod";
-import { createTweet, findAnswersFromTweet, findTweet } from "../services/tweet";
+import { checkIfTweetIsLikedByUser, createTweet, findAnswersFromTweet, findTweet, likeTweet, unlikeTweet } from "../services/tweet";
 import { addHashtag } from "../services/trend";
 
 export const addTweet = async (req:ExtendedRequest,res: Response) => {
@@ -53,10 +53,35 @@ export const getTweet = async (req: ExtendedRequest, res: Response) => {
   res.json({ tweet })
 }
 
-export const getAnswers = async(req: ExtendedRequest, res: Response) => {
+export const getAnswers = async (req: ExtendedRequest, res: Response) => {
   const { id } = req.params
 
   const answers = await findAnswersFromTweet(parseInt(id))
 
   res.json({ answers })
 } 
+
+export const likeToggle = async (req: ExtendedRequest, res: Response) => {
+  const { id } = req.params
+
+  const liked = await checkIfTweetIsLikedByUser(
+    req.userSlug as string,
+    parseInt(id)
+  )
+
+  if(liked) {
+    //unliked
+    unlikeTweet(
+      req.userSlug as string,
+      parseInt(id)
+    )
+  } else {
+    // like
+    likeTweet(
+      req.userSlug as string,
+      parseInt(id)
+    )
+  }
+
+  res.json({})
+}
