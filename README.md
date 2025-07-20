@@ -33,25 +33,34 @@ O **Clone Twitter** é um projeto desenvolvido durante meus estudos em React, co
 
 ```
 clone-twitter/
-├── public/               # Arquivos estáticos (imagens, favicon, etc)
-├── src/
-│   ├── app/              # Páginas e rotas do Next.js (autenticação, feed, perfil, busca, etc)
-│   ├── components/       # Componentes reutilizáveis (UI, navegação, tweet, perfil, etc)
-│   ├── data/             # Dados mockados para usuários e tweets
-│   ├── types/            # Tipagens TypeScript para entidades do projeto
-│   └── utils/            # Funções utilitárias (ex: formatação de datas)
-├── package.json          # Dependências e scripts do projeto
-├── tailwind.config.ts    # Configuração do Tailwind CSS
-├── tsconfig.json         # Configuração do TypeScript
-└── README.md             # Documentação do projeto
+├── frontend/                # Frontend Next.js (interface, rotas, componentes, etc)
+│   ├── public/              # Arquivos estáticos (imagens, favicon, etc)
+│   └── src/
+│       ├── app/             # Páginas e rotas do Next.js
+│       ├── components/      # Componentes reutilizáveis
+│       ├── data/            # Dados mockados
+│       ├── types/           # Tipagens TypeScript
+│       └── utils/           # Funções utilitárias
+├── backend/                 # Backend Node.js (API REST, autenticação, banco de dados)
+│   ├── src/
+│   │   ├── controllers/     # Controllers das rotas
+│   │   ├── routers/         # Definição das rotas
+│   │   ├── services/        # Lógica de negócio
+│   │   ├── schemas/         # Schemas de validação (Zod)
+│   │   ├── types/           # Tipos TypeScript
+│   │   └── utils/           # Funções utilitárias
+│   ├── prisma/              # Migrations e schema do banco (Prisma)
+│   ├── package.json         # Dependências do backend
+│   └── tsconfig.json        # Configuração TypeScript backend
+├── .gitignore               # Ignora node_modules e .env em todos os diretórios
+├── package.json             # Dependências e scripts do monorepo
+└── README.md                # Documentação do projeto
 ```
 
-### Descrição das principais pastas:
-- **/src/app/**: Onde ficam as páginas e rotas do projeto, organizadas por contexto (ex: autenticação, feed, perfil, busca, tweet).
-- **/src/components/**: Componentes reutilizáveis, separados por domínio (auth, home, nav, profile, tweet, ui).
-- **/src/data/**: Dados mockados para simular usuários e tweets.
-- **/src/types/**: Tipos TypeScript para garantir tipagem forte e segurança.
-- **/src/utils/**: Funções utilitárias, como formatação de datas.
+### Observações importantes:
+- **.env** e **node_modules** de qualquer subdiretório são ignorados pelo git (não vão para o repositório).
+- O backend utiliza **Prisma** para ORM e migrations, e **Zod** para validação de dados.
+- O frontend é um app Next.js moderno, com Tailwind CSS e tipagem forte.
 
 ---
 
@@ -70,6 +79,7 @@ clone-twitter/
 
 ## 🛠️ Stacks e Ferramentas
 
+### Frontend
 - **Next.js** (React 18)
 - **TypeScript**
 - **Tailwind CSS**
@@ -77,31 +87,54 @@ clone-twitter/
 - **PostCSS**
 - **Git**
 
+### Backend
+- **Node.js** + **Express**
+- **TypeScript**
+- **Prisma** (ORM e migrations)
+- **SQLite** (banco local, fácil de rodar)
+- **Zod** (validação de dados)
+- **JWT** (autenticação)
+- **Bcrypt** (hash de senha)
+- **Helmet** (segurança)
+- **CORS**
+
 ---
 
 ## 🏁 Como Rodar Localmente
 
-1. **Clone o repositório:**
+### 1. Clone o repositório
 ```bash
 git clone https://github.com/micas-tsx/clone-twitter.git
 cd clone-twitter
 ```
 
-2. **Instale as dependências:**
+### 2. Instale as dependências do frontend e backend
 ```bash
-npm install
-# ou
-yarn install
+cd frontend && npm install # ou yarn install
+cd ../backend && npm install # ou yarn install
 ```
 
-3. **Inicie o servidor de desenvolvimento:**
+### 3. Configure o banco e variáveis de ambiente
+- Copie o arquivo `.env.example` para `.env` em `backend/` e ajuste as variáveis conforme necessário.
+- Rode as migrations do Prisma:
 ```bash
+cd backend
+npx prisma migrate dev
+```
+
+### 4. Inicie o backend
+```bash
+cd backend
 npm run dev
-# ou
-yarn dev
 ```
 
-4. **Acesse no navegador:**
+### 5. Inicie o frontend
+```bash
+cd frontend
+npm run dev
+```
+
+### 6. Acesse no navegador
 ```
 http://localhost:3000
 ```
