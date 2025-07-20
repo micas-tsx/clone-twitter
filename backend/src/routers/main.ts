@@ -10,9 +10,9 @@ mainRouter.get('/ping', pingController.ping)
 
 // rotas de login
 mainRouter.post('/auth/signup',authController.signup) //rota de cadastro
-/*
-mainRouter.post('/auth/signin') //rota de login
+mainRouter.post('/auth/signin', authController.signin) //rota de login
 
+/*
 //fazer um tweet
 mainRouter.post('/tweet') // posta um tweet
 mainRouter.get('/tweet/:id') // pesquisa um tweet
