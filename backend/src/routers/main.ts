@@ -2,6 +2,7 @@ import { Router } from 'express'
 import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
 import * as tweetController from '../controllers/tweet'
+import * as userController from '../controllers/user'
 import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
@@ -20,9 +21,9 @@ mainRouter.get('/tweet/:id', verifyJWT, tweetController.getTweet) // pesquisa um
 mainRouter.get('/tweet/:id/answers', verifyJWT, tweetController.getAnswers) // vê as respostas de um tweet
 mainRouter.post('/tweet/:id/like', verifyJWT, tweetController.likeToggle) // toggle de like
 
-/*
 // usuario
-mainRouter.get('/user/:slug') // pesquisa de usuario
+mainRouter.get('/user/:slug', verifyJWT, userController.getUser) // pesquisa de usuario
+/*
 mainRouter.get('/user/:slug/tweets') // pesquisa de tweet de um usuario
 mainRouter.post('/user/:slug/follow') // toggle de folow
 mainRouter.put('/user') //editar usuario
