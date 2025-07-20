@@ -43,3 +43,12 @@ export const addTweet = async (req:ExtendedRequest,res: Response) => {
     tweet: newTweet 
   })
 }
+
+export const getTweet = async (req: ExtendedRequest, res: Response) => {
+  const { id } = req.params
+
+  const tweet = await findTweet(parseInt(id))
+  if(!tweet) return res.json({ error: 'Tweet inexistente' })
+
+  res.json({ tweet })
+}
