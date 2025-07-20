@@ -2,8 +2,6 @@
 
 # dependencies
 /node_modules
-/frontend/node_modules
-/backend/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -36,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignorar node_modules e .env em qualquer subdiretório
+**/node_modules/
+**/.env
