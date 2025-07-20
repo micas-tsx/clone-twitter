@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
+import * as tweetController from '../controllers/tweet'
 import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
@@ -13,9 +14,9 @@ mainRouter.get('/privateping', verifyJWT, pingController.pivateping)
 mainRouter.post('/auth/signup',authController.signup) //rota de cadastro
 mainRouter.post('/auth/signin', authController.signin) //rota de login
 
-/*
 //fazer um tweet
-mainRouter.post('/tweet') // posta um tweet
+mainRouter.post('/tweet', verifyJWT, tweetController.addTweet) // posta um tweet
+/*
 mainRouter.get('/tweet/:id') // pesquisa um tweet
 mainRouter.get('/tweet/:id/answers') // vê as respostas de um tweet
 mainRouter.get('/tweet/:id/like') // toggle de like

@@ -27,7 +27,4 @@ export const verifyJWT = (req: ExtendedRequest, res: Response, next: NextFunctio
       next()
     }
   )
-  
-  
-  next()
 }
