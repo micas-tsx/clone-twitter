@@ -25,8 +25,8 @@ mainRouter.post('/tweet/:id/like', verifyJWT, tweetController.likeToggle) // tog
 mainRouter.get('/user/:slug', verifyJWT, userController.getUser) // pesquisa de usuario
 mainRouter.get('/user/:slug/tweets', verifyJWT, userController.getUserTweets) // pesquisa de tweet de um usuario
 mainRouter.post('/user/:slug/follow', verifyJWT, userController.followToggle) // toggle de folow
+mainRouter.put('/user', verifyJWT, userController.updateUser) //editar usuario
 /*
-mainRouter.put('/user', verifyJWT, userController) //editar usuario
 mainRouter.put('/user/avatar', verifyJWT, userController) //editar usuario avatar
 mainRouter.put('/user/cover', verifyJWT, userController)//editar usuario cover
 
