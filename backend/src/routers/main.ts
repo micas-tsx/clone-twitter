@@ -4,6 +4,7 @@ import * as authController from '../controllers/auth'
 import * as tweetController from '../controllers/tweet'
 import * as userController from '../controllers/user'
 import * as feedController from '../controllers/feed'
+import * as searchController from '../controllers/search'
 import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
@@ -34,6 +35,6 @@ mainRouter.put('/user/cover', verifyJWT, userController)//editar usuario cover
 
 // feed (nomes autoexplicativos doq fazem)
 mainRouter.get('/feed', verifyJWT, feedController.getFeed)
-//mainRouter.get('/search')
+mainRouter.get('/search', verifyJWT, searchController.searchTweets)
 //mainRouter.get('/trending')
 //mainRouter.get('/suggestions')
