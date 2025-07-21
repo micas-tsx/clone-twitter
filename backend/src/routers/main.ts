@@ -3,6 +3,7 @@ import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
 import * as tweetController from '../controllers/tweet'
 import * as userController from '../controllers/user'
+import * as feedController from '../controllers/feed'
 import { verifyJWT } from '../utils/jwt'
 
 export const mainRouter = Router()
@@ -29,11 +30,10 @@ mainRouter.put('/user', verifyJWT, userController.updateUser) //editar usuario
 /*
 mainRouter.put('/user/avatar', verifyJWT, userController) //editar usuario avatar
 mainRouter.put('/user/cover', verifyJWT, userController)//editar usuario cover
+*/
 
 // feed (nomes autoexplicativos doq fazem)
-mainRouter.get('/feed')
-mainRouter.get('/search')
-mainRouter.get('/trending')
-mainRouter.get('/suggestions')
-
-*/
+mainRouter.get('/feed', verifyJWT, feedController.getFeed)
+//mainRouter.get('/search')
+//mainRouter.get('/trending')
+//mainRouter.get('/suggestions')
